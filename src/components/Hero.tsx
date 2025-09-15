@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
-import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
+import { useRive } from "@rive-app/react-canvas";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
@@ -8,20 +8,12 @@ const Hero = () => {
   const { RiveComponent: DataVizRive } = useRive({
     src: "https://public.rive.app/community/runtime-files/2063-4080-flutter-puzzle-hack-project.riv",
     autoplay: true,
-    layout: new Layout({
-      fit: Fit.Cover,
-      alignment: Alignment.Center,
-    }),
   });
 
   // Rive animation for 3D elements
   const { RiveComponent: Abstract3DRive } = useRive({
     src: "https://public.rive.app/community/runtime-files/1058-1940-marty-the-wizard.riv",
     autoplay: true,
-    layout: new Layout({
-      fit: Fit.Contain,
-      alignment: Alignment.Center,
-    }),
   });
 
   return (

@@ -1,16 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Brain, Box, BarChart3, Palette } from "lucide-react";
-import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
+import { useRive } from "@rive-app/react-canvas";
 
 const About = () => {
   // Rive animation for skills showcase
   const { RiveComponent: SkillsRive } = useRive({
     src: "https://public.rive.app/community/runtime-files/1447-2487-liquid-download.riv",
     autoplay: true,
-    layout: new Layout({
-      fit: Fit.Cover,
-      alignment: Alignment.Center,
-    }),
   });
 
   const skills = [
