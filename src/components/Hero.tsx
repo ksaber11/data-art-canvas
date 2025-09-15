@@ -1,8 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
+  // Rive animation for data visualization
+  const { RiveComponent: DataVizRive } = useRive({
+    src: "https://public.rive.app/community/runtime-files/2063-4080-flutter-puzzle-hack-project.riv",
+    autoplay: true,
+    layout: new Layout({
+      fit: Fit.Cover,
+      alignment: Alignment.Center,
+    }),
+  });
+
+  // Rive animation for 3D elements
+  const { RiveComponent: Abstract3DRive } = useRive({
+    src: "https://public.rive.app/community/runtime-files/1058-1940-marty-the-wizard.riv",
+    autoplay: true,
+    layout: new Layout({
+      fit: Fit.Contain,
+      alignment: Alignment.Center,
+    }),
+  });
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -14,10 +35,15 @@ const Hero = () => {
       {/* Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-primary/10" />
       
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-primary/20 animate-float" />
-      <div className="absolute top-40 right-20 w-16 h-16 rounded-full bg-secondary/20 animate-float" style={{animationDelay: "2s"}} />
-      <div className="absolute bottom-40 left-20 w-12 h-12 rounded-full bg-accent/20 animate-float" style={{animationDelay: "4s"}} />
+      {/* Rive Background Animation */}
+      <div className="absolute inset-0 opacity-30">
+        <DataVizRive />
+      </div>
+      
+      {/* Floating 3D Rive Animation */}
+      <div className="absolute top-10 right-10 w-64 h-64 opacity-60">
+        <Abstract3DRive />
+      </div>
       
       {/* Main Content */}
       <div className="relative z-10 text-center space-y-8 px-4 max-w-4xl mx-auto">

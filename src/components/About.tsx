@@ -1,7 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Brain, Box, BarChart3, Palette } from "lucide-react";
+import { useRive, Layout, Fit, Alignment } from "@rive-app/react-canvas";
 
 const About = () => {
+  // Rive animation for skills showcase
+  const { RiveComponent: SkillsRive } = useRive({
+    src: "https://public.rive.app/community/runtime-files/1447-2487-liquid-download.riv",
+    autoplay: true,
+    layout: new Layout({
+      fit: Fit.Cover,
+      alignment: Alignment.Center,
+    }),
+  });
+
   const skills = [
     {
       icon: <Brain className="w-8 h-8 text-primary" />,
@@ -53,18 +64,24 @@ const About = () => {
             </p>
           </div>
           
-          <div className="glass-card p-8">
-            <h3 className="text-2xl font-semibold mb-6 text-foreground">Core Expertise</h3>
-            <div className="grid grid-cols-2 gap-6">
-              {skills.map((skill, index) => (
-                <div key={index} className="text-center space-y-3 smooth-transition hover:scale-105">
-                  <div className="mx-auto w-16 h-16 rounded-full bg-muted flex items-center justify-center">
-                    {skill.icon}
+          <div className="glass-card p-8 relative overflow-hidden">
+            {/* Rive Animation Background */}
+            <div className="absolute inset-0 opacity-20">
+              <SkillsRive />
+            </div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-semibold mb-6 text-foreground">Core Expertise</h3>
+              <div className="grid grid-cols-2 gap-6">
+                {skills.map((skill, index) => (
+                  <div key={index} className="text-center space-y-3 smooth-transition hover:scale-105">
+                    <div className="mx-auto w-16 h-16 rounded-full bg-muted flex items-center justify-center">
+                      {skill.icon}
+                    </div>
+                    <h4 className="font-semibold text-foreground">{skill.title}</h4>
+                    <p className="text-sm text-muted-foreground">{skill.description}</p>
                   </div>
-                  <h4 className="font-semibold text-foreground">{skill.title}</h4>
-                  <p className="text-sm text-muted-foreground">{skill.description}</p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
